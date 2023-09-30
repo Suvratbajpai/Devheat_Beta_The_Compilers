@@ -1,10 +1,13 @@
-const nav = () => {
+import React from "react";
+import { Link } from "react-router-dom";
+
+function Navbar() {
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-dark">
                 <div className="container-fluid">
                     <div class="container d-flex gap-5 align-items-center">
-                        <a class="navbar" href="#">
+                        <Link class="navbar" to="/">
                             <img
                                 src="/images/hackedin_logo1.png"
                                 alt="logo"
@@ -12,11 +15,11 @@ const nav = () => {
                                 height="54"
                                 className="rounded"
                             />
-                        </a>
+                        </Link>
 
-                        <a class="navbar-brand text-white" href="#">
+                        <Link class="navbar-brand text-white" to="/hackathon">
                             Hackathons
-                        </a>
+                        </Link>
                     </div>
 
                     <button
@@ -36,18 +39,18 @@ const nav = () => {
                     >
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
                         <form className="d-flex" role="search">
-                            <button
+                            <Link
                                 className="btn btn-outline-success"
-                                type="submit"
+                                to="/login"
                             >
-                                SignUp/Login
-                            </button>
+                                login
+                            </Link>
                         </form>
                     </div>
                 </div>
             </nav>
         </>
     );
-};
+}
 
-export default nav;
+export default Navbar;
