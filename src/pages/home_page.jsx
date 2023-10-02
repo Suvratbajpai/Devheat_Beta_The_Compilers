@@ -24,8 +24,9 @@ function HomePage() {
           </a> */}
         </div>
       </div>
+      
       {/* About and Contact Us section */}
-      <div className="footer">
+      <div className="footer bg-dark">
         <div className="about-section">
           <h2>About</h2>
           <p>
