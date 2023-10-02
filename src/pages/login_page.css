@@ -10,7 +10,7 @@ html {
 }
 
 /* Navbar styles */
-.navbar {
+/* .navbar {
   background-color: #333;
   color: #fff;
   position: fixed;
@@ -57,7 +57,7 @@ html {
 
 .navbar-menu a:hover {
   color: #ff6b6b;
-}
+} */
 
 /* Login container styles */
 .login-container {

@@ -22,7 +22,7 @@ function Navbar() {
                         </Link>
                     </div>
 
-                    <button
+                    {/* <button
                         className="navbar-toggler"
                         type="button"
                         data-bs-toggle="collapse"
@@ -32,20 +32,20 @@ function Navbar() {
                         aria-label="Toggle navigation"
                     >
                         <span className="navbar-toggler-icon"></span>
-                    </button>
+                    </button> */}
                     <div
                         className="collapse navbar-collapse"
                         id="navbarSupportedContent"
                     >
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-                        <form className="d-flex" role="search">
+                        {/* <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul> */}
+                        {/* <form className="d-flex" role="search">
                             <Link
                                 className="btn btn-outline-success"
                                 to="/login"
                             >
                                 login
                             </Link>
-                        </form>
+                        </form> */}
                     </div>
                 </div>
             </nav>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './signup_page.css';
-import Navbar from '../components/navbar';
+// import Navbar from '../components/navbar';
 
 class SignUp extends Component {
   constructor(props) {
