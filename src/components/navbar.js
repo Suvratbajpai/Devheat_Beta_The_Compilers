@@ -20,6 +20,9 @@ function Navbar() {
                         <Link class="navbar-brand text-white" to="/hackathon">
                             Hackathons
                         </Link>
+                        <Link class="navbar-brand text-white" to="/my_hackathon">
+                            My-Hackathons
+                        </Link>
                     </div>
 
                     {/* <button

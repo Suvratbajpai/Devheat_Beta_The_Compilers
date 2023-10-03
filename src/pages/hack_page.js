@@ -1,10 +1,13 @@
-import React from 'react'
+import React from "react";
+import Navbar from "../components/navbar";
 
 function HackPage() {
-  return (
-    <>
-    </>
-  )
+    return (
+        <>
+            <Navbar />
+            
+        </>
+    );
 }
 
-export default HackPage
+export default HackPage;

@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/navbar";
+import { Link } from "react-router-dom";
+
 function hackathon_page() {
     const cardStyle = { width: "20rem" };
+
     return (
         <>
             <Navbar />
@@ -18,9 +21,9 @@ function hackathon_page() {
                             Lorem ipsum dolor sit amet consectetur adipisicing
                             elit. Facere, repudiandae.
                         </p>
-                        <a href="#" class="btn btn-primary">
+                        <Link to="/team" class="btn btn-primary">
                             Hack
-                        </a>
+                        </Link>
                     </div>
                 </div>
                 <div class="card" style={cardStyle}>

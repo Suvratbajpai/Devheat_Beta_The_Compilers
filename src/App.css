@@ -13,3 +13,14 @@
     margin-right: 100px;
     /* height: 350px;   */
 }
+.text-form{
+    max-width: 1000px;
+    margin: auto;
+}
+.skills-institute{
+    max-width: 1000px;
+    margin: auto;
+}
+.add_mem-formtext {
+    font-size: 1.5rem;
+}

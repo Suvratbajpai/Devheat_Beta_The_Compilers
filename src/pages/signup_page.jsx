@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './signup_page.css';
-// import Navbar from '../components/navbar';
+import Navbar from '../components/navbar';
 
 class SignUp extends Component {
   constructor(props) {
@@ -29,6 +29,8 @@ class SignUp extends Component {
     const { username, email, password, confirmPassword } = this.state;
 
     return (
+      <>
+      <Navbar/>
       <div className="signup-container">
         <h2>Sign Up</h2>
         <form onSubmit={this.handleSubmit}>
@@ -40,14 +42,14 @@ class SignUp extends Component {
             onChange={this.handleChange}
             required
           />
-          <input
+          {/* <input
             type="email"
             name="email"
             placeholder="Email"
             value={email}
             onChange={this.handleChange}
             required
-          />
+          /> */}
           <input
             type="password"
             name="password"
@@ -56,17 +58,19 @@ class SignUp extends Component {
             onChange={this.handleChange}
             required
           />
-          <input
+          {/* <input
             type="password"
             name="confirmPassword"
             placeholder="Confirm Password"
             value={confirmPassword}
             onChange={this.handleChange}
             required
-          />
+          /> */}
           <button type="submit">Sign Up</button>
         </form>
       </div>
+      
+      </>
     );
   }
 }

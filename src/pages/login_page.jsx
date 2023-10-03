@@ -21,7 +21,7 @@ class LoginPage extends Component {
   };
 
   handleLogin = () => {
-    const { username, password } = this.state;
+    const { username, password } = this.state; 
 
     // Simulate authentication (replace with actual authentication logic)
     this.setState({ isSubmitting: true }, () => {
