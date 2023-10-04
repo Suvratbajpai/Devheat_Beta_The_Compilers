@@ -2,13 +2,13 @@
 
 <br>  
 
-# The Compilers presents you
+# The Compilers presents you 
 
   
-# HackedIn - Where Innovation Unites 
+# HackedIn - Where Innovation Unites   
 
   
-### Connecting Innovators, Building Teams 🤝
+### Connecting Innovators, Building Teams 🤝  
 
 **Overview:**
 
@@ -19,7 +19,7 @@ Tired searching for a skilled hackathon partner? Look no further! Welcome to Hac
 
 HackedIn is here to bridge the gap. We're the platform that connects innovators, helping them build dream teams with the right skills and expertise.
 
-## Key Features  🧰
+## Key Features  🧰  
 
 - Discover ongoing hackathons and assemble your dream team. 💡
 
@@ -29,7 +29,7 @@ HackedIn is here to bridge the gap. We're the platform that connects innovators,
 
 - Get  updated with Team Invites . 📬
 
-## Technologies Used 💻
+## Technologies Used 💻  
 
 - **MongoDB:** As our database, we rely on MongoDB, a NoSQL database, for efficient and flexible data storage.
 
@@ -42,7 +42,7 @@ HackedIn is here to bridge the gap. We're the platform that connects innovators,
 - **Git:** We leverage Git for version control to manage and track changes in our codebase, ensuring collaborative development and code integrity.
 
 
-## Workflow 🔄
+## Workflow 🔄  
   
 ✍️ **Signup:** Create your account on HackedIn.
 
@@ -54,7 +54,7 @@ HackedIn is here to bridge the gap. We're the platform that connects innovators,
 
 🔁  **Repeat:** Continue this process for multiple hackathons.
 
-## Code Quality  📝
+## Code Quality  📝  
 
 - Our backend code is meticulously crafted, adhering to the MVC (Model-View-Controller) architecture. This ensures scalability and maintainability while promoting clean and efficient code. 🏗️
 
@@ -62,7 +62,7 @@ HackedIn is here to bridge the gap. We're the platform that connects innovators,
 
 - Rest assured, all our backend components are working seamlessly on Postman. 📬
   
-## Scope of Additions 🌟
+## Scope of Additions 🌟   
 
 Despite our best efforts, these are features we couldn't implement yet and look forward to getting them at HackedIn:
 
@@ -79,8 +79,5 @@ Despite our best efforts, these are features we couldn't implement yet and look 
 🚀 **Reminders:** Stay updated on hackathons and team activities.
 
 
-
-
-
 ---
-## Submission Video Link 🔗
+## Submission Video Link 🔗   
