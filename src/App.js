@@ -8,21 +8,21 @@ import TeamForm from "./pages/team_create_form";
 import TeamRegForm from "./pages/team_registered_form";
 import AddMem from "./pages/add_mem";
 function App() {
-    return (
-        <>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Home_page />} />
-                    <Route path="/login" element={<Login_page />} />
-                    <Route path="/hackathon" element={<Hackathon_page />} />
-                    <Route path="/signup" element={<SignUp_page />} />
-                    <Route path="/team" element={<TeamForm />} />
-                    <Route path="/team_created" element={<TeamRegForm />} />
-                    <Route path="/new_members" element={<AddMem />} />
-                </Routes>
-            </BrowserRouter>
-        </>
-    );
+  return (
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/HackedIn/v1/home" element={<Home_page />} />
+          <Route path="/HackedIn/v1/login" element={<Login_page />} />
+          <Route path="/HackedIn/v1/hackathon" element={<Hackathon_page />} />
+          <Route path="/HackedIn/v1/signup" element={<SignUp_page />} />
+          <Route path="/HackedIn/v1/team" element={<TeamForm />} />
+          <Route path="/HackedIn/v1/team_created" element={<TeamRegForm />} />
+          <Route path="/HackedIn/v1/new_members" element={<AddMem />} />
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
 }
 
 export default App;

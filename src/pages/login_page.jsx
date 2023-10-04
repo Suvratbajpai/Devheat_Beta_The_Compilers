@@ -20,20 +20,33 @@ class LoginPage extends Component {
     this.setState({ [name]: value, errorMessage: '' });
   };
 
-  handleLogin = () => {
-    const { username, password } = this.state; 
+  handleLogin = async (e) => {
+    e.preventDefault();
+    
+    const { username, password } = this.state;
+    try {
+      const response = await fetch('http://localhost:5483/HackedIn/v1/login', { 
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
 
-    // Simulate authentication (replace with actual authentication logic)
-    this.setState({ isSubmitting: true }, () => {
-      setTimeout(() => {
-        if (username === 'your_username' && password === 'your_password') {
-          this.setState({ isLoggedIn: true, errorMessage: '' });
-        } else {
-          this.setState({ errorMessage: 'Invalid username or password' });
-        }
-        this.setState({ isSubmitting: false });
-      }, 1000); // Simulated delay
-    });
+      if (response.status === 200) {
+        const { token } = await response.json();
+
+      this.setState({ token });
+
+      console.log('Authentication successful');
+
+      } else {
+        console.error('Authentication failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+   
   };
 
   render() {

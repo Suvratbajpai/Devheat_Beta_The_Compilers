@@ -13,16 +13,39 @@ class SignUp extends Component {
     };
   }
 
-  handleChange = (e) => {
+  handleChange =  (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your sign-up logic here
-    // You can send the form data to an API or perform client-side validation
-    // Example: const { username, email, password, confirmPassword } = this.state;
+    const { username, password } = this.state;
+    try {
+      const response = await fetch('http://localhost:5483/HackedIn/v1/signup', { 
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (response.status === 200) {
+        const { token } = await response.json();
+
+      this.setState({ token });
+
+      console.log('Authentication successful');
+
+      } else {
+        console.error('Authentication failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+
+    this.props.history.push('/HackedIn/v1/hackathon');
+
   };
 
   render() {

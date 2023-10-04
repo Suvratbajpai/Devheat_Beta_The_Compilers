@@ -21,7 +21,7 @@ function hackathon_page() {
                             Lorem ipsum dolor sit amet consectetur adipisicing
                             elit. Facere, repudiandae.
                         </p>
-                        <Link to="/team" class="btn btn-primary">
+                        <Link to="/HackedIn/v1/team" class="btn btn-primary">
                             Hack
                         </Link>
                     </div>

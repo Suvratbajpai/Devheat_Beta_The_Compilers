@@ -10,10 +10,10 @@ function HomePage() {
         <h1>Welcome to The Hackathons Dashboard</h1>
         <p>Find, participate, and create hackathons.</p>
         <div className="cta-buttons">
-          <a href="/signup" className="signup-button">
+          <a href="/HackedIn/v1/signup" className="signup-button">
             Sign Up
           </a>
-          <a href="/login" className="login-button">
+          <a href="/HackedIn/v1/login" className="login-button">
             Login
           </a>
           {/* <a href="/Hackathons_info" className="hakathons_info-button">

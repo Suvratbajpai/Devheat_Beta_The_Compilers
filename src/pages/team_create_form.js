@@ -3,6 +3,9 @@ import Navbar from "../components/navbar";
 import { Dropdown } from "bootstrap";
 import { Link } from "react-router-dom";
 function TeamForm() {
+
+
+    
     const max_width = { maxwidth: "1000rem" };
     return (
         <>
@@ -43,7 +46,7 @@ function TeamForm() {
                 </div>
                 <div className="form-group row">
                     <div className="col-sm-10">
-                        <Link to="/team_created">
+                        <Link to="/HackedIn/v1/team_created">
                             <button type="submit" className="btn btn-primary">
                                 Create
                             </button>
