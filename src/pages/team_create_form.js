@@ -11,7 +11,7 @@ function TeamForm() {
             <form className="mt-5 text-form">
                 <div className="form-group row">
                     <label
-                        for="inputEmail3"
+                        for="team-leader"
                         className="col-sm-2 col-form-label"
                     >
                         Team Name
@@ -19,15 +19,15 @@ function TeamForm() {
                     <div className="col-sm-10">
                         <input
                             type="text"
-                            className="form-control"
-                            id="inputEmail3"
+                            className="mb-5 form-control"
+                            id="team-leader"
                             placeholder="Team Name"
                         />
                     </div>
                 </div>
                 <div className="form-group row">
                     <label
-                        for="inputEmail3"
+                        for="team-leader"
                         className="col-sm-2 col-form-label"
                     >
                         Team Leader
@@ -35,15 +35,15 @@ function TeamForm() {
                     <div className="col-sm-10">
                         <input
                             type="text"
-                            className="form-control"
-                            id="inputEmail3"
+                            className="mb-5 form-control"
+                            id="team-leader"
                             placeholder="Team Leader"
                         />
                     </div>
                 </div>
                 <div className="form-group row">
                     <div className="col-sm-10">
-                        <Link to='/team_created'>
+                        <Link to="/team_created">
                             <button type="submit" className="btn btn-primary">
                                 Create
                             </button>

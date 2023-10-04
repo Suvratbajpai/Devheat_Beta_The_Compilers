@@ -1,6 +1,8 @@
 import React from "react";
 import Navbar from "../components/navbar";
 import { Link } from "react-router-dom";
+import { Dropdown } from "bootstrap";
+
 function TeamRegForm() {
     const max_width = { maxwidth: "1000rem" };
     return (
@@ -9,24 +11,21 @@ function TeamRegForm() {
 
             <form className="mt-5 text-form">
                 <div className="form-group row">
-                    <label
-                        for="inputEmail3"
-                        className="col-sm-2 col-form-label"
-                    >
+                    <label for="team-name" className="col-sm-2 col-form-label">
                         Team Name
                     </label>
                     <div className="col-sm-10">
                         <input
                             type="text"
-                            className="form-control"
-                            id="inputEmail3"
+                            className="mb-5 form-control"
+                            id="team-name"
                             placeholder="Team Name"
                         />
                     </div>
                 </div>
                 <div className="form-group row">
                     <label
-                        for="inputEmail3"
+                        for="team-leader"
                         className="col-sm-2 col-form-label"
                     >
                         Team Leader
@@ -34,20 +33,20 @@ function TeamRegForm() {
                     <div className="col-sm-10">
                         <input
                             type="text"
-                            className="form-control"
-                            id="inputEmail3"
+                            className="mb-5 form-control"
+                            id="team-leader"
                             placeholder="Team Leader"
                         />
                     </div>
                 </div>
                 <div className="form-group row">
                     <label
-                        for="inputEmail3"
+                        for="team-members"
                         className="col-sm-2 col-form-label"
                     >
                         Team Members
                     </label>
-                    <div className="col-sm-10">
+                    <div className="mb-5 col-sm-10" id="team-members    ">
                         <div class="Dropdown">
                             <button
                                 class="btn btn-secondary dropdown-toggle"
