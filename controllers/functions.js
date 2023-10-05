@@ -4,10 +4,6 @@ const hackathons = require("../models/HackathonModel.js");
 const teams = require("../models/TeamModel.js");
 const jwt = require("jsonwebtoken");
 
-// const getLandingPage = (req, res) => {
-//   res.send("homepage");
-// };
-
 const gethackathonPage = (req, res) => {
   res.send("hackathons ");
 };
@@ -15,7 +11,7 @@ const gethackathonPage = (req, res) => {
 //using postman only :
 const postnewHackathon = async (req, res) => {
   const hackathon = await hackathons.create(req.body);
-  res.json({ hackathon: hackathon, msg: "Created successfully" });
+  res.json({ hackathon: hackathon, msg: "Created successf-ully" });
   console.log("hackathon created");
 };
 
@@ -34,7 +30,6 @@ const getOnehackathon = async (req, res) => {
 };
 
 const postUser = async (req, res) => {
-  // await users.deleteMany({ email: null });
   const { username, password } = req.body;
   const user = await users.create({
     username,
@@ -74,6 +69,7 @@ const getUser = async (req, res) => {
 
     res.status(200).json({
       token: token,
+      username: user.username,
       message: "user logged in successfully",
       user_id: user._id,
     });
@@ -86,7 +82,7 @@ const getUser = async (req, res) => {
 
 const authenticateToken = (req, res, next) => {
   const token = req.header("Authorization");
-
+  console.log("token:", token);
   if (!token) {
     return res.status(401).json({ message: "Access denied" });
   }
@@ -95,7 +91,6 @@ const authenticateToken = (req, res, next) => {
     if (err) {
       return res.status(403).json({ message: "Token expired or invalid" });
     }
-
     req.user = user;
     console.log("authenticaton succesfull!!!", user);
     next();
@@ -109,7 +104,9 @@ const postUserDetails = async (req, res) => {
     { specialization, institute },
     { new: true, runValidators: true }
   );
-  res.status(200).send(user);
+  res.status(200).json({
+    username: user.username,
+  });
   console.log("institute and specialization added");
 };
 
@@ -120,6 +117,10 @@ const getUserHomePage = async (req, res) => {
 
 const postTeamCreation = async (req, res) => {
   const { Team_name } = req.body;
+  if (!Team_name) {
+    return res.status(400).json({ error: "Team_name is required" });
+  }
+
   const { hack_id } = req.params;
   const TeamLeader_id = req.user.id;
   const TeamLeader = await users.findById(TeamLeader_id);
@@ -130,14 +131,16 @@ const postTeamCreation = async (req, res) => {
     Team_leader: TeamLeader.username,
   });
   team.Team_members.push(TeamLeader.username);
-
-  // Update the team with the Team_members field
   await team.save();
 
-  // Add the hackathon name to the user's my-hackathon's page
   TeamLeader.my_hackathons.hackathons.push(hackathon.name);
   await TeamLeader.save();
-  res.send(team);
+  res.status(200).json({
+    teamid: team._id,
+    teamleader: TeamLeader.username,
+    teamname: Team_name,
+    teammembers: team.Team_members,
+  });
   console.log("team created!!");
 };
 
@@ -154,6 +157,7 @@ const SearchMembers = async (req, res) => {
     .find({ specialization, institute })
     .select("username specialization institute");
 
+  console.log(usersArray);
   res.status(200).send(usersArray);
   console.log("users sent successfully");
 };
@@ -162,7 +166,7 @@ const RequestMembers = async (req, res) => {
   const { user_id, team_id, hack_id } = req.params;
   const team = await teams.findById(team_id);
   const hackathon = await hackathons.findById(hack_id);
-  users.findByIdAndUpdate(
+  const updateUser = await users.findByIdAndUpdate(
     user_id,
     {
       $push: {
@@ -174,27 +178,38 @@ const RequestMembers = async (req, res) => {
     },
     { new: true, runValidators: true }
   );
-  res.status(200).send("request sent successfully");
+  res.status(200).send({
+    message: "request sent successfully",
+    request: updateUser.my_hackathons.requests,
+  });
   console.log("request sent successfully!!");
 };
 
 const HandleRequest = async (req, res) => {
-  const { Team_name, hackathon_name } = req.body;
-  await users.findOneandUpdate(
-    hackathon_name,
-    { $pull: { "my_hackathons.hackathons ": hackathon_name } },
+  const user = await users.findById(req.user.id);
+  const request = user.my_hackathons.requests[0];
+  await users.findByIdAndUpdate(
+    user._id,
+    { $pull: { "my_hackathons.hackathons ": request.hackathon_name } },
     { new: true, runValidators: true }
   );
-  await users.findOneAndUpdate(hackathon_name, {
-    $pull: { "my_hackathons.requests": {} },
-  });
-  const user = await users.find(req.user.id);
   const updated_team = await teams.findOneAndUpdate(
-    Team_name,
+    { Team_name: request.team_name },
     { $pull: { Team_members: user.username } },
     { new: true, runValidators: true }
   );
-  res.status(200).send("request accepted successfully");
+
+  await users.findByIdAndUpdate(
+    user._id,
+    { $pull: { "my_hackathons.requests": {} } },
+    { new: true, runValidators: true }
+  );
+
+  res.status(200).send({
+    message: "request accepted successfully",
+    updated_team: updated_team,
+    my_hackathons: user.my_hackathons,
+  });
 };
 
 const getMyHackathons = async (req, res) => {
