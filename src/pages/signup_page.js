@@ -1,28 +1,25 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './signup_page.css';
 import Navbar from '../components/navbar';
 
-class SignUp extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-    };
-  }
+const SignUp = ({ history }) => {
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
 
-  handleChange =  (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    this.setState({ [name]: value });
+    setFormData({ ...formData, [name]: value });
   };
 
-  handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const { username, password } = this.state;
+    const { username, password } = formData;
     try {
-      const response = await fetch('http://localhost:5483/HackedIn/v1/signup', { 
+      const response = await fetch('http://localhost:5483/HackedIn/v1/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -32,11 +29,9 @@ class SignUp extends Component {
 
       if (response.status === 200) {
         const { token } = await response.json();
-
-      this.setState({ token });
-
-      console.log('Authentication successful');
-
+        // Assuming token is the correct state variable.
+        setFormData({ ...formData, token });
+        console.log('Authentication successful');
       } else {
         console.error('Authentication failed');
       }
@@ -44,25 +39,23 @@ class SignUp extends Component {
       console.error('Error:', error);
     }
 
-    this.props.history.push('/HackedIn/v1/hackathon');
-
+    history.push('/HackedIn/v1/hackathon');
   };
 
-  render() {
-    const { username, email, password, confirmPassword } = this.state;
+  const { username, email, password, confirmPassword } = formData;
 
-    return (
-      <>
-      <Navbar/>
+  return (
+    <>
+      <Navbar />
       <div className="signup-container">
         <h2>Sign Up</h2>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <input
             type="text"
             name="username"
             placeholder="Username"
             value={username}
-            onChange={this.handleChange}
+            onChange={handleChange}
             required
           />
           {/* <input
@@ -70,7 +63,7 @@ class SignUp extends Component {
             name="email"
             placeholder="Email"
             value={email}
-            onChange={this.handleChange}
+            onChange={handleChange}
             required
           /> */}
           <input
@@ -78,7 +71,7 @@ class SignUp extends Component {
             name="password"
             placeholder="Password"
             value={password}
-            onChange={this.handleChange}
+            onChange={handleChange}
             required
           />
           {/* <input
@@ -86,16 +79,14 @@ class SignUp extends Component {
             name="confirmPassword"
             placeholder="Confirm Password"
             value={confirmPassword}
-            onChange={this.handleChange}
+            onChange={handleChange}
             required
           /> */}
           <button type="submit">Sign Up</button>
         </form>
       </div>
-      
-      </>
-    );
-  }
-}
+    </>
+  );
+};
 
 export default SignUp;
