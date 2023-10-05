@@ -17,7 +17,6 @@ const {
 } = require("../controllers/functions");
 
 const router = express.Router();
-// router.route("/home").get(getLandingPage);
 router.route("/signup").post(postUser);
 router.route("/login").post(getUser);
 router.route("/form").patch(authenticateToken, postUserDetails);
@@ -26,9 +25,6 @@ router.route("/my-hackathons").get(authenticateToken, getMyHackathons);
 router.route("/my-hackathons/requests").patch(authenticateToken, HandleRequest);
 router.route("/hackathons").get(gethackathonPage);
 router.route("/hackathons/:hack_id").get(authenticateToken, getOnehackathon);
-// router
-//   .route("/hackathons/:hack_id/application")
-//   .get(authenticateToken, getTeamCreationForm);
 router
   .route("/hackathons/:hack_id/application")
   .post(authenticateToken, postTeamCreation);
