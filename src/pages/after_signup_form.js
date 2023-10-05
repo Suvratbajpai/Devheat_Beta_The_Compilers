@@ -1,7 +1,7 @@
 import { useState } from "react";
 import React from "react";
 import Navbar from "../components/navbar";
-import './add_mem.css';
+import { useNavigate } from "react-router-dom";
 
 function AfterSignup() {
   const [formData, setFormData] = useState({
@@ -9,36 +9,32 @@ function AfterSignup() {
     Institution: "",
   });
 
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
   const token = localStorage.getItem("token");
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { specialization, institute } = formData;
 
-    const storedTeam_id = localStorage.getItem("team_id");
-
     try {
-      const response = await fetch(
-        `http://localhost:5483/HackedIn/v1/hackathons/651b7640c6fec34d7200fc7f/${storedTeam_id}/search`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `${token}`,
-          },
-          body: JSON.stringify({ specialization, institute }),
-        }
-      );
+      const response = await fetch("http://localhost:5483/HackedIn/v1/form", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `${token}`,
+        },
+        body: JSON.stringify({ specialization, institute }),
+      });
 
       if (response.status === 200) {
-        const usersArray = await response.json();
-        localStorage.setItem("usersArray", usersArray);
-        console.log(usersArray);
+        const { username } = await response.json();
+        localStorage.setItem("username", username);
+        navigate(`/HackedIn/v1/userpage`);
       } else {
         console.error("Authentication failed");
       }
@@ -46,7 +42,6 @@ function AfterSignup() {
       console.error("Error:", error);
     }
   };
-  const storedUserArray = localStorage.getItem("usersArray");
 
   return (
     <>
@@ -56,13 +51,13 @@ function AfterSignup() {
           htmlFor="exampleDataList1"
           className="add_mem-formtext form-label"
         >
-          Specialization:
+          Specialization :
         </label>
         <input
-          className="mb-5 form-control input-field"
+          className="mb-5 form-control"
           list="datalistOptions1"
           id="exampleDataList1"
-          placeholder="Search a skill"
+          placeholder="Add Your Skills"
           name="specialization"
           onChange={handleChange}
         />
@@ -124,14 +119,13 @@ function AfterSignup() {
           Institution:
         </label>
         <input
-          className="mb-5 form-control input-field"
+          className="mb-5 form-control"
           list="datalistOptions2"
           id="exampleDataList2"
-          placeholder="Search an Institution"
+          placeholder="Add Your Institution"
           name="institute"
           onChange={handleChange}
         />
-
         <datalist id="datalistOptions2">
           <option value="Indian Institute of Technology Bombay (IIT Bombay)" />
           <option value="Indian Institute of Technology Delhi (IIT Delhi)" />
@@ -237,41 +231,14 @@ function AfterSignup() {
           <option value="National Institute of Technology Andhra Pradesh (NIT Andhra Pradesh)" />
           <option value="National Institute of Technology Agartala (NIT Agartala)" />
         </datalist>
+
         <button
           type="button"
           onClick={handleSubmit}
-          className="btn btn-primary submit-button"
+          className="btn btn-primary"
         >
-          Find
+          Submit
         </button>
-      </div>
-
-      <div className="card">
-        <div className="card-body">
-          <h5 className="card-title">{storedUserArray[0].username}</h5>
-          <p className="card-text">Some content goes here.</p>
-        </div>
-        <div className="card-footer text-end">
-          <button className="btn btn-primary">Request</button>
-        </div>
-      </div>
-      <div className="card">
-        <div className="card-body">
-          <h5 className="card-title">Card Title</h5>
-          <p className="card-text">Some content goes here.</p>
-        </div>
-        <div className="card-footer text-end">
-          <button className="btn btn-primary">Request</button>
-        </div>
-      </div>
-      <div className="card">
-        <div className="card-body">
-          <h5 className="card-title">Card Title</h5>
-          <p className="card-text">Some content goes here.</p>
-        </div>
-        <div className="card-footer text-end">
-          <button className="btn btn-primary">Request</button>
-        </div>
       </div>
     </>
   );

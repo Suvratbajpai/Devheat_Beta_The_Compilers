@@ -1,77 +1,74 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Navbar from "../components/navbar";
 import "../pages/login_page.css";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-    isLoggedIn: false,
-    errorMessage: '',
-    isSubmitting: false,
+    username: "",
+    password: "",
   });
 
-  const handleInputChange = (e) => {
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({ ...prevState, [name]: value, errorMessage: '' }));
+    setFormData({ ...formData, [name]: value });
   };
 
-  const handleLogin = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const { username, password } = formData;
     try {
-      const response = await fetch('http://localhost:5483/HackedIn/v1/login', { 
-        method: 'POST',
+      const response = await fetch("http://localhost:5483/HackedIn/v1/login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, password }),
       });
 
       if (response.status === 200) {
-        const { token } = await response.json();
-        setFormData(prevState => ({ ...prevState, token }));
-        console.log('Authentication successful');
+        const { token, username } = await response.json();
+        localStorage.setItem("token", token);
+        localStorage.setItem("username", username);
+        console.log("Authentication successful");
+        navigate(`/HackedIn/v1/userpage`);
       } else {
-        console.error('Authentication failed');
+        console.error("Authentication failed");
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
   };
 
-  const { username, password, errorMessage, isSubmitting } = formData;
-
   return (
-    React.createElement(React.Fragment, null,
-      React.createElement(Navbar, null),
-      React.createElement('div', { className: 'login-container' },
-        React.createElement('h2', null, 'Login'),
-        React.createElement('div', { className: `error-message ${errorMessage ? 'show' : ''}` }, errorMessage),
-        React.createElement('input', {
-          type: 'text',
-          name: 'username',
-          placeholder: 'Username',
-          value: username,
-          onChange: handleInputChange,
-          disabled: isSubmitting,
-        }),
-        React.createElement('input', {
-          type: 'password',
-          name: 'password',
-          placeholder: 'Password',
-          value: password,
-          onChange: handleInputChange,
-          disabled: isSubmitting,
-        }),
-        React.createElement('button', {
-          className: `login-button ${isSubmitting ? 'loading' : ''}`,
-          onClick: handleLogin,
-          disabled: isSubmitting,
-        }, isSubmitting ? 'Logging in...' : 'Login')
-      )
-    )
+    <>
+      <Navbar />
+      <div className="login-container">
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            value={formData.username}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </>
   );
-}
+};
 
 export default LoginPage;

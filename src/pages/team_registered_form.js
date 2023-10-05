@@ -1,11 +1,13 @@
 import React from "react";
 import Navbar from "../components/navbar";
 import { Link } from "react-router-dom";
-import { Dropdown } from "bootstrap";
-import './team_registered_form.css';
 
 function TeamRegForm() {
-  const max_width = { maxwidth: "1000rem" };
+  const storedUsername = localStorage.getItem("username");
+  const storedTeam_name = localStorage.getItem("team_name");
+  const storedTeam_members = localStorage.getItem("team_members");
+  const storedTeam_members_array = storedTeam_members ? storedTeam_members.split(",") : [];
+
   return (
     <>
       <Navbar />
@@ -20,7 +22,8 @@ function TeamRegForm() {
               type="text"
               className="mb-5 form-control"
               id="team-name"
-              placeholder="Team Name"
+              value={storedTeam_name || ""}
+              readOnly
             />
           </div>
         </div>
@@ -34,6 +37,8 @@ function TeamRegForm() {
               className="mb-5 form-control"
               id="team-leader"
               placeholder="Team Leader"
+              value={storedUsername || ""}
+              readOnly
             />
           </div>
         </div>
@@ -41,32 +46,24 @@ function TeamRegForm() {
           <label for="team-members" className="col-sm-2 col-form-label">
             Team Members
           </label>
-          <div className="mb-5 col-sm-10" id="team-members    ">
-            <div class="Dropdown">
+          <div className="mb-5 col-sm-10" id="team-members">
+            <div className="Dropdown">
               <button
-                class="btn btn-secondary dropdown-toggle"
+                className="btn btn-secondary dropdown-toggle"
                 type="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="true"
               >
                 Members
               </button>
-              <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item" href="#">
-                    member 1
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                    member 2
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                    member 3
-                  </a>
-                </li>
+              <ul className="dropdown-menu">
+                {storedTeam_members_array.map((member, index) => (
+                  <li key={index}>
+                    <a className="dropdown-item" href="#">
+                      {member}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -77,7 +74,7 @@ function TeamRegForm() {
               <button type="submit" className="btn btn-success">
                 Add Members
               </button>
-            </Link>
+            a</Link>
           </div>
         </div>
       </form>

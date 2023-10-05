@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import './navbar.css';
 
 function Navbar() {
   return (
@@ -16,6 +15,16 @@ function Navbar() {
                 height="54"
                 className="rounded"
               />
+            </Link>
+
+            <Link class="navbar-brand text-white" to="/HackedIn/v1/hackathon">
+              Hackathons
+            </Link>
+            <Link
+              class="navbar-brand text-white"
+              to="/HackedIn/v1/my-hackathon"
+            >
+              my-hackathons
             </Link>
           </div>
 

@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
-import './signup_page.css';
-import Navbar from '../components/navbar';
+import React, { useState } from "react";
+import "./signup_page.css";
+import Navbar from "../components/navbar";
+import { useNavigate } from "react-router-dom";
 
-const SignUp = ({ history }) => {
+function SignUp() {
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+    username: "",
+    password: "",
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,30 +20,26 @@ const SignUp = ({ history }) => {
     e.preventDefault();
     const { username, password } = formData;
     try {
-      const response = await fetch('http://localhost:5483/HackedIn/v1/signup', {
-        method: 'POST',
+      const response = await fetch("http://localhost:5483/HackedIn/v1/signup", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, password }),
       });
 
       if (response.status === 200) {
         const { token } = await response.json();
-        // Assuming token is the correct state variable.
-        setFormData({ ...formData, token });
-        console.log('Authentication successful');
+        localStorage.setItem("token", token);
+        console.log("Authentication successful");
+        navigate(`/HackedIn/v1/form`);
       } else {
-        console.error('Authentication failed');
+        console.error("Authentication failed");
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
-
-    history.push('/HackedIn/v1/hackathon');
   };
-
-  const { username, email, password, confirmPassword } = formData;
 
   return (
     <>
@@ -54,39 +51,23 @@ const SignUp = ({ history }) => {
             type="text"
             name="username"
             placeholder="Username"
-            value={username}
+            value={formData.username}
             onChange={handleChange}
             required
           />
-          {/* <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={email}
-            onChange={handleChange}
-            required
-          /> */}
           <input
             type="password"
             name="password"
             placeholder="Password"
-            value={password}
+            value={formData.password}
             onChange={handleChange}
             required
           />
-          {/* <input
-            type="password"
-            name="confirmPassword"
-            placeholder="Confirm Password"
-            value={confirmPassword}
-            onChange={handleChange}
-            required
-          /> */}
           <button type="submit">Sign Up</button>
         </form>
       </div>
     </>
   );
-};
+}
 
 export default SignUp;
