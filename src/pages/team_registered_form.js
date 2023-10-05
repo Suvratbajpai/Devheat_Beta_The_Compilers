@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../components/navbar";
 import { Link } from "react-router-dom";
 import { Dropdown } from "bootstrap";
+import './team_registered_form.css';
 
 function TeamRegForm() {
   const max_width = { maxwidth: "1000rem" };

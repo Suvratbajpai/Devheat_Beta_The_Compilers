@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../components/navbar";
+import './add_mem.css';
 
 function AddMem() {
     return (

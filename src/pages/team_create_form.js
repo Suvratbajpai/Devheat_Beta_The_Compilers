@@ -2,6 +2,8 @@ import React from "react";
 import Navbar from "../components/navbar";
 import { Dropdown } from "bootstrap";
 import { Link } from "react-router-dom";
+import './team_create_form.css';
+
 function TeamForm() {
 
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../components/navbar";
 import { Link } from "react-router-dom";
+import './hackathon_page.css';
 
 function hackathon_page() {
     const cardStyle = { width: "20rem" };

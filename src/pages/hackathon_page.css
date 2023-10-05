@@ -1,0 +1,69 @@
+/* Navbar Styles */
+.navbar {
+    background-color: #333;
+    padding: 10px 20px;
+    color: #fff;
+  }
+  
+  /* Hackathon Cards Container Styles */
+  .hackathon-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px;
+  }
+  
+  /* Card Styles */
+  .card {
+    width: 20rem;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Card Image Styles */
+  .card-img-top {
+    object-fit: cover;
+    height: 200px;
+  }
+  
+  /* Card Body Styles */
+  .card-body {
+    padding: 20px;
+  }
+  
+  /* Card Title Styles */
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Card Text Styles */
+  .card-text {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  /* Button Styles */
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Link Styles */
+  a.btn-primary {
+    text-decoration: none;
+  }
+  
