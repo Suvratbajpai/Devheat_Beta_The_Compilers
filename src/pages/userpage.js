@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/after_loginNavbar";
 import { useLocation } from "react-router-dom";
+import './userpage.css';
 
 function UserPage() {
   const storedUsername = localStorage.getItem("username");

@@ -1,0 +1,35 @@
+/* UserPage Styles */
+.user-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px;
+    text-align: center;
+  }
+  
+  .user-page h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #007bff; /* Change color for emphasis */
+  }
+  
+  .user-page p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+  
+  /* Optional: Dark Mode Toggle */
+  body.dark-mode .user-page h1 {
+    color: #28a745; /* Change color for emphasis in dark mode */
+  }
+  
+  body.dark-mode .user-page p {
+    color: #ccc;
+  }
+  
+  /* Optional: Add transition for smoother animations */
+  .user-page, .user-page h1, .user-page p {
+    transition: color 0.3s;
+  }
+  

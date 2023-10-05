@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import './navbar.css';
 
 function Navbar() {
   return (
@@ -8,7 +7,7 @@ function Navbar() {
       <nav className="navbar navbar-expand-lg bg-dark">
         <div className="container-fluid">
           <div class="container d-flex gap-5 align-items-center">
-            <Link class="navbar" to="/HackedIn/v1/home">
+            <Link class="navbar" to="/">
               <img
                 src="/images/hackedin_logo.png"
                 alt="logo"
@@ -16,6 +15,13 @@ function Navbar() {
                 height="54"
                 className="rounded"
               />
+            </Link>
+
+            <Link class="navbar-brand text-white" to="/HackedIn/v1/hackathon">
+              Hackathons
+            </Link>
+            <Link class="navbar-brand text-white" to="/my_hackathon">
+              My-Hackathons
             </Link>
           </div>
 

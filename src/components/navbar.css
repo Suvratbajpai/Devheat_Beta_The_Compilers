@@ -1,41 +1,31 @@
-/* Navbar Container Styles */
+/* Navbar Styles */
 .navbar {
     background-color: #333;
     padding: 10px 20px;
+    color: #fff;
   }
   
-  .container.d-flex {
+  .navbar .container-fluid {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
   }
   
-  /* Navbar Logo Styles */
   .navbar img {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
   }
   
-  /* Navbar Brand Styles */
-  .navbar-brand {
+  .navbar a {
     color: #fff;
-    font-size: 1.2rem;
     text-decoration: none;
-    margin-right: 20px;
-    transition: color 0.3s;
+    font-size: 1.2rem;
+    margin-left: 20px;
   }
   
-  .navbar-brand:hover {
+  .navbar a:hover {
     color: #007bff;
-  }
-  
-  /* Navbar Link Styles */
-  .navbar a.navbar-brand {
-    display: flex;
-    align-items: center;
-  }
-  
-  .navbar a.navbar-brand img {
-    margin-right: 10px;
   }
   
   /* Hamburger Menu (Optional) */
@@ -61,61 +51,9 @@
     font-size: 1rem;
     margin: 0 10px;
     text-decoration: none;
-    transition: color 0.3s;
   }
   
   .navbar-nav .nav-link:hover {
-    color: #007bff;
-  }
-  
-  /* Search Form (Optional) */
-  .navbar-form input {
-    padding: 5px 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-  }
-  
-  .navbar-form .btn {
-    border-radius: 4px;
-    margin-left: 10px;
-  }
-  
-  /* Mobile Menu Overlay (Optional) */
-  .navbar-collapse {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: none;
-    z-index: 999;
-  }
-  
-  .navbar-collapse.show {
-    display: block;
-  }
-  
-  /* Mobile Menu Content (Optional) */
-  .navbar-collapse ul {
-    list-style: none;
-    text-align: center;
-    padding: 0;
-  }
-  
-  .navbar-collapse ul li {
-    margin: 10px 0;
-  }
-  
-  .navbar-collapse ul li a {
-    color: #fff;
-    font-size: 1.2rem;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  
-  .navbar-collapse ul li a:hover {
     color: #007bff;
   }
   
