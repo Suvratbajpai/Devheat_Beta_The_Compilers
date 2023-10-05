@@ -1,10 +1,16 @@
 import React from "react";
 import Navbar from "../components/navbar";
 import { Link } from "react-router-dom";
-import { Dropdown } from "bootstrap";
+import { useNavigate } from "react-router-dom";
 
 function TeamRegForm() {
+  const storedUsername = localStorage.getItem("username");
+  const storedTeam_name = localStorage.getItem("team_name");
+  const storedTeam_members = localStorage.getItem("team_members");
+  const storedTeam_members_array = storedTeam_members.split(",");
+
   const max_width = { maxwidth: "1000rem" };
+
   return (
     <>
       <Navbar />
@@ -19,7 +25,8 @@ function TeamRegForm() {
               type="text"
               className="mb-5 form-control"
               id="team-name"
-              placeholder="Team Name"
+              value={storedTeam_name}
+              readOnly
             />
           </div>
         </div>
@@ -33,6 +40,8 @@ function TeamRegForm() {
               className="mb-5 form-control"
               id="team-leader"
               placeholder="Team Leader"
+              value={storedUsername}
+              readOnly
             />
           </div>
         </div>
@@ -53,17 +62,17 @@ function TeamRegForm() {
               <ul class="dropdown-menu">
                 <li>
                   <a class="dropdown-item" href="#">
-                    member 1
+                    {storedTeam_members_array[0]}
                   </a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="#">
-                    member 2
+                    {storedTeam_members_array[1]}
                   </a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="#">
-                    member 3
+                    {storedTeam_members_array[2]}
                   </a>
                 </li>
               </ul>

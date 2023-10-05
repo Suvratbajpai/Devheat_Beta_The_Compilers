@@ -16,6 +16,16 @@ function Navbar() {
                 className="rounded"
               />
             </Link>
+
+            <Link class="navbar-brand text-white" to="/HackedIn/v1/hackathon">
+              Hackathons
+            </Link>
+            <Link
+              class="navbar-brand text-white"
+              to="/HackedIn/v1/my-hackathon"
+            >
+              my-hackathons
+            </Link>
           </div>
 
           {/* <button

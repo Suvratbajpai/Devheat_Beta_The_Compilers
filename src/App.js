@@ -7,6 +7,9 @@ import SignUp_page from "./pages/signup_page";
 import TeamForm from "./pages/team_create_form";
 import TeamRegForm from "./pages/team_registered_form";
 import AddMem from "./pages/add_mem";
+import AfterSignup from "./pages/after_signup_form";
+import Userpage from "./pages/userpage";
+
 function App() {
   return (
     <>
@@ -19,6 +22,8 @@ function App() {
           <Route path="/HackedIn/v1/team" element={<TeamForm />} />
           <Route path="/HackedIn/v1/team_created" element={<TeamRegForm />} />
           <Route path="/HackedIn/v1/new_members" element={<AddMem />} />
+          <Route path="/HackedIn/v1/form" element={<AfterSignup />} />
+          <Route path="/HackedIn/v1/userpage" element={<Userpage />} />
         </Routes>
       </BrowserRouter>
     </>
