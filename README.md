@@ -56,7 +56,9 @@ HackedIn is here to bridge the gap. We're the platform that connects innovators,
 
 ## Code Quality  📝  
 
-- Our backend code is meticulously crafted, adhering to the MVC (Model-View-Controller) architecture. This ensures scalability and maintainability while promoting clean and efficient code. 🏗️
+- our frontend code is clearner and is written such that HackedIn provides simpler User interface for the users.
+
+- Our backend code is crafted adhering to the MVC (Model-View-Controller) architecture. This ensures scalability and maintainability while promoting clean and efficient code. 🏗️
 
 - One of our standout features is dynamic hackathon integration. By dynamically fetching hackathon information through APIs instead of relying on static data, we're already taking a significant step toward achieving the first scope of addition, what misses is a frontend code ! we'll add it soon. ✨
 
@@ -81,3 +83,8 @@ Despite our best efforts, these are features we couldn't implement yet and look 
 
 ---
 ## Submission Video Link 🔗   
+https://drive.google.com/file/d/1c43Qe5GXX1FnZt1MidjU4wEcY2auuH5R/view?usp=drive_link
+
+
+
+##Thank You 🙏🏻🙏🏻
