@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import './after_loginNavbar.css';
+import "./after_loginNavbar.css";
 
 function Navbar() {
   return (
@@ -23,34 +23,16 @@ function Navbar() {
             </Link>
             <Link
               class="navbar-brand text-white"
-              to="/HackedIn/v1/my-hackathon"
+              to="/HackedIn/v1/my-hackathons"
             >
-              my-hackathons
+              My Hackathons
             </Link>
           </div>
 
-          {/* <button
-                        className="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                    >
-                        <span className="navbar-toggler-icon"></span>
-                    </button> */}
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            {/* <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul> */}
-            {/* <form className="d-flex" role="search">
-                            <Link
-                                className="btn btn-outline-success"
-                                to="/login"
-                            >
-                                login
-                            </Link>
-                        </form> */}
-          </div>
+          <div
+            className="collapse navbar-collapse"
+            id="navbarSupportedContent"
+          ></div>
         </div>
       </nav>
     </>

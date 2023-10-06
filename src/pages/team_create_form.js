@@ -1,7 +1,6 @@
 import { useState } from "react";
 import React from "react";
-import Navbar from "../components/navbar";
-import { Dropdown } from "react-bootstrap";
+import Navbar from "../components/after_loginNavbar";
 import { useNavigate } from "react-router-dom";
 
 function TeamForm() {
@@ -24,7 +23,31 @@ function TeamForm() {
     e.preventDefault();
     const { Team_name } = formData;
     try {
-      // ... (rest of your code)
+      const response = await fetch(
+        "http://localhost:5483/HackedIn/v1/hackathons/651b751a04579fe39231f273/application",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `${token}`,
+          },
+          body: JSON.stringify({ Team_name }),
+        }
+      );
+
+      if (response.status === 200) {
+        const { teamid, teamleader, teamname, teammembers } =
+          await response.json();
+        localStorage.setItem("teamid", teamid);
+        localStorage.setItem("teamleader", teamleader);
+        localStorage.setItem("teamname", teamname);
+        localStorage.setItem("teammembers", teammembers);
+        console.log({ teamid, teamleader, teamname, teammembers });
+        console.log("Authentication successful");
+        navigate(`/HackedIn/v1/team_created`);
+      } else {
+        console.error("Authentication failed");
+      }
     } catch (error) {
       console.error("Error:", error);
     }

@@ -1,11 +1,9 @@
-/* Navbar Styles */
 .navbar {
     background-color: #333;
     padding: 10px 20px;
     color: #fff;
   }
   
-  /* Hackathon Cards Container Styles */
   .hackathon-cards {
     display: flex;
     flex-wrap: wrap;
@@ -14,39 +12,34 @@
     margin: 20px;
   }
   
-  /* Card Styles */
   .card {
     width: 20rem;
     border: none;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   }
   
-  /* Card Image Styles */
   .card-img-top {
     object-fit: cover;
     height: 200px;
   }
   
-  /* Card Body Styles */
   .card-body {
     padding: 20px;
   }
   
-  /* Card Title Styles */
   .card-title {
     font-size: 1.25rem;
     font-weight: bold;
     margin-bottom: 10px;
   }
   
-  /* Card Text Styles */
   .card-text {
+    padding : 10px auto ;
     font-size: 0.9rem;
     color: #555;
     margin-bottom: 20px;
   }
   
-  /* Button Styles */
   .btn-primary {
     background-color: #007bff;
     color: #fff;
@@ -62,7 +55,6 @@
     background-color: #0056b3;
   }
   
-  /* Link Styles */
   a.btn-primary {
     text-decoration: none;
   }

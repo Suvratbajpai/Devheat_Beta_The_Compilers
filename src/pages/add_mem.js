@@ -1,7 +1,7 @@
 import { useState } from "react";
 import React from "react";
-import Navbar from "../components/navbar";
-import './add_mem.css';
+import Navbar from "../components/after_loginNavbar";
+import "./add_mem.css";
 
 function AfterSignup() {
   const [formData, setFormData] = useState({
@@ -9,6 +9,11 @@ function AfterSignup() {
     Institution: "",
   });
 
+  const [userArray, setUserArray] = useState([]);
+  const [userIds, setUserIds] = useState([]);
+  const [requestStatus, setRequestStatus] = useState(
+    Array(userArray.length).fill(false)
+  );
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -37,8 +42,10 @@ function AfterSignup() {
 
       if (response.status === 200) {
         const usersArray = await response.json();
-        localStorage.setItem("usersArray", usersArray);
-        console.log(usersArray);
+        setUserArray(usersArray);
+        const userIds = usersArray.map((user) => user._id);
+        setUserIds(userIds);
+        console.log(userIds);
       } else {
         console.error("Authentication failed");
       }
@@ -46,7 +53,34 @@ function AfterSignup() {
       console.error("Error:", error);
     }
   };
-  const storedUserArray = localStorage.getItem("usersArray");
+  const handleRequest = async (e, userId, index) => {
+    e.preventDefault();
+    const storedTeam_id = localStorage.getItem("team_id");
+    try {
+      const response = await fetch(
+        `http://localhost:5483/HackedIn/v1/hackathons/651b7640c6fec34d7200fc7f/${storedTeam_id}/search/${userId}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `${token}`,
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        const updatedRequestStatus = [...requestStatus];
+        updatedRequestStatus[index] = true;
+        setRequestStatus(updatedRequestStatus);
+      } else {
+        console.error("Authentication failed");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+
+    console.log(`Request button clicked for user with _id: ${userId}`);
+  };
 
   return (
     <>
@@ -246,32 +280,29 @@ function AfterSignup() {
         </button>
       </div>
 
-      <div className="card">
-        <div className="card-body">
-          <h5 className="card-title">{storedUserArray[0].username}</h5>
-          <p className="card-text">Some content goes here.</p>
-        </div>
-        <div className="card-footer text-end">
-          <button className="btn btn-primary">Request</button>
-        </div>
-      </div>
-      <div className="card">
-        <div className="card-body">
-          <h5 className="card-title">Card Title</h5>
-          <p className="card-text">Some content goes here.</p>
-        </div>
-        <div className="card-footer text-end">
-          <button className="btn btn-primary">Request</button>
-        </div>
-      </div>
-      <div className="card">
-        <div className="card-body">
-          <h5 className="card-title">Card Title</h5>
-          <p className="card-text">Some content goes here.</p>
-        </div>
-        <div className="card-footer text-end">
-          <button className="btn btn-primary">Request</button>
-        </div>
+      <div className="card-container">
+        {userArray.map((user, index) => (
+          <div className="card" key={index}>
+            <div className="card-body">
+              <h5 className="card-title">{user.username}</h5>
+              <p className="card-text">{user.specialization}</p>
+            </div>
+            <div className="card-footer text-end">
+              {requestStatus[index] ? (
+                <button className="btn btn-success" disabled>
+                  Requested
+                </button>
+              ) : (
+                <button
+                  className="btn btn-primary"
+                  onClick={(e) => handleRequest(e, user._id, index)}
+                >
+                  Request
+                </button>
+              )}
+            </div>
+          </div>
+        ))}
       </div>
     </>
   );

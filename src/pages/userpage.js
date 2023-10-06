@@ -1,27 +1,29 @@
 import React from "react";
 import Navbar from "../components/after_loginNavbar";
 import { useLocation } from "react-router-dom";
-import './userpage.css';
+import "./userpage.css";
 
 function UserPage() {
   const storedUsername = localStorage.getItem("username");
   return (
     <>
       <Navbar />
-      <h1>Welcome, {storedUsername}</h1>
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione illo
-        dolor non? Minima labore voluptates alias! Labore veniam aperiam
-        necessitatibus nobis eligendi dicta a ut, alias esse minus ipsam,
-        numquam sint quo tenetur! In, non doloremque maiores voluptate provident
-        rem laboriosam placeat quidem minima ut reiciendis ad nulla aliquid
-        explicabo veniam minus, natus ea itaque nostrum sunt. Nam veniam dicta
-        ipsam fuga, quaerat excepturi natus quisquam sunt, ipsa, eligendi sint.
-        Unde obcaecati molestiae commodi dolores, facere blanditiis fugit
-        corporis illum quaerat, est ab temporibus qui. Magni earum aliquid
-        doloribus vitae pariatur accusantium ut ad libero atque incidunt. Nulla,
-        sunt odit!
-      </p>
+      <div className="userpage-container">
+        <h1 className="userpage-heading">Welcome, {storedUsername}</h1>
+        <p className="userpage-paragraph">
+          HackedIn is your gateway to the world of hackathons and innovation.
+          Connect with like-minded tech enthusiasts, discover exciting
+          hackathons, and build your dream projects.
+        </p>
+        <p className="userpage-paragraph">
+          Whether you're a seasoned hacker or just getting started, HackedIn has
+          something for everyone. Join us today and unleash your creativity!
+        </p>
+        <p className="userpage-paragraph">
+          Get ready to embark on a journey of innovation, collaboration, and
+          endless possibilities. Let's start hacking together!
+        </p>
+      </div>
     </>
   );
 }

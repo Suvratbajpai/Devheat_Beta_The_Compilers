@@ -1,12 +1,12 @@
 import React from "react";
-import Navbar from "../components/navbar";
+import Navbar from "../components/after_loginNavbar";
 import { Link } from "react-router-dom";
 
 function TeamRegForm() {
   const storedUsername = localStorage.getItem("username");
-  const storedTeam_name = localStorage.getItem("team_name");
-  const storedTeam_members = localStorage.getItem("team_members");
-  const storedTeam_members_array = storedTeam_members ? storedTeam_members.split(",") : [];
+  const storedTeam_name = localStorage.getItem("teamname");
+  const storedTeam_members = localStorage.getItem("teammembers");
+  const storedTeam_members_array = storedTeam_members.split(",");
 
   return (
     <>
@@ -22,7 +22,7 @@ function TeamRegForm() {
               type="text"
               className="mb-5 form-control"
               id="team-name"
-              value={storedTeam_name || ""}
+              value={storedTeam_name}
               readOnly
             />
           </div>
@@ -37,7 +37,7 @@ function TeamRegForm() {
               className="mb-5 form-control"
               id="team-leader"
               placeholder="Team Leader"
-              value={storedUsername || ""}
+              value={storedUsername}
               readOnly
             />
           </div>
@@ -74,7 +74,7 @@ function TeamRegForm() {
               <button type="submit" className="btn btn-success">
                 Add Members
               </button>
-            a</Link>
+            </Link>
           </div>
         </div>
       </form>
