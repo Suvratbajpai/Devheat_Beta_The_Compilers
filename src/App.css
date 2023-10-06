@@ -1,0 +1,26 @@
+.hackathon-cards{
+    height: 90vh;  
+    max-width: 1280px;
+    margin: 0 auto;
+    display:  flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /* margin-left: 15rem; */
+}
+.card {
+    margin-right: 100px;
+    /* height: 350px;   */
+}
+.text-form{
+    max-width: 1000px;
+    margin: auto;
+}
+.skills-institute{
+    max-width: 1000px;
+    margin: auto;
+}
+.add_mem-formtext {
+    font-size: 1.5rem;
+}
