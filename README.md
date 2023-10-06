@@ -56,7 +56,7 @@ HackedIn is here to bridge the gap. We're the platform that connects innovators,
 
 ## Code Quality  📝  
 
-- our frontend code is clearner and is written such that HackedIn provides simpler User interface for the users.
+- Our frontend code is clearner and is written such that HackedIn provides simpler User interface for the users.
 
 - Our backend code is crafted adhering to the MVC (Model-View-Controller) architecture. This ensures scalability and maintainability while promoting clean and efficient code. 🏗️
 
@@ -87,4 +87,4 @@ https://drive.google.com/file/d/1c43Qe5GXX1FnZt1MidjU4wEcY2auuH5R/view?usp=drive
 
 
 
-##Thank You 🙏🏻🙏🏻
+## Thank You 🙏🏻🙏🏻
